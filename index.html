@@ -4,77 +4,115 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>init100 | HPC and GPU Infrastructure</title>
-  <meta name="description" content="init100 is an infrastructure-focused business exploring HPC and GPU provider partnerships, cluster operations, and long-term compute ecosystem opportunities." />
+  <meta
+    name="description"
+    content="init100 is an infrastructure-focused business exploring HPC and GPU provider partnerships, cluster operations, and long-term compute ecosystem opportunities."
+  />
   <style>
     :root {
-      --bg: #09090b;
-      --panel: #111114;
-      --panel-2: #0d0d10;
+      --bg: #0a0a0b;
+      --bg-soft: #111214;
+      --panel: rgba(255, 255, 255, 0.03);
+      --panel-strong: rgba(255, 255, 255, 0.05);
       --text: #f4f4f5;
       --muted: #a1a1aa;
       --soft: #71717a;
-      --border: #27272a;
+      --border: rgba(255, 255, 255, 0.08);
       --accent: #c7f36b;
-      --accent-hover: #d3f97c;
-      --accent-text: #111111;
-      --max: 1120px;
-      --radius: 24px;
+      --accent-hover: #d5f884;
+      --accent-text: #0d0d0e;
+
+      --radius: 22px;
+      --container: 1120px;
+
+      --space-1: 12px;
+      --space-2: 16px;
+      --space-3: 20px;
+      --space-4: 24px;
+      --space-5: 32px;
+      --space-6: 40px;
+      --space-7: 56px;
+      --space-8: 72px;
+      --space-9: 96px;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
 
     body {
       margin: 0;
-      background: radial-gradient(circle at top, #111214 0%, #09090b 45%);
+      background:
+        radial-gradient(circle at top, #15171a 0%, #0a0a0b 45%),
+        var(--bg);
       color: var(--text);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       line-height: 1.65;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
     }
 
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+    }
+
     .container {
-      width: min(var(--max), calc(100% - 40px));
+      width: min(var(--container), calc(100% - 32px));
       margin: 0 auto;
     }
 
-    section { padding: 72px 0; }
+    .section {
+      padding: var(--space-8) 0;
+    }
 
     .hero {
-      padding: 96px 0 84px;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: var(--space-9) 0 var(--space-8);
+      border-bottom: 1px solid var(--border);
     }
 
     .badge {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
       padding: 7px 14px;
       border-radius: 999px;
-      border: 1px solid rgba(199,243,107,0.18);
-      background: rgba(199,243,107,0.07);
+      border: 1px solid rgba(199, 243, 107, 0.2);
+      background: rgba(199, 243, 107, 0.08);
       color: var(--accent);
       font-size: 13px;
       font-weight: 600;
       letter-spacing: 0.02em;
-      margin-bottom: 22px;
+      margin-bottom: var(--space-4);
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin: 0;
     }
 
     .hero h1 {
-      margin: 0;
-      max-width: 820px;
-      font-size: clamp(42px, 6vw, 72px);
+      max-width: 880px;
+      font-size: clamp(2.5rem, 7vw, 4.6rem);
       line-height: 0.98;
-      letter-spacing: -0.04em;
-      font-weight: 700;
+      letter-spacing: -0.05em;
+      font-weight: 750;
     }
 
-    .hero p {
-      margin: 24px 0 0;
+    .hero-copy {
+      margin-top: var(--space-4);
       max-width: 760px;
-      font-size: 19px;
+      font-size: clamp(1.05rem, 1.6vw, 1.2rem);
       color: var(--muted);
     }
 
@@ -82,46 +120,50 @@
       display: flex;
       flex-wrap: wrap;
       gap: 14px;
-      margin-top: 34px;
+      margin-top: var(--space-5);
     }
 
     .button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 13px 18px;
+      min-height: 48px;
+      padding: 12px 18px;
       border-radius: 14px;
       text-decoration: none;
-      font-weight: 700;
       font-size: 15px;
-      transition: 0.18s ease;
+      font-weight: 650;
+      transition: transform 0.18s ease, background-color 0.18s ease, border-color 0.18s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
     }
 
     .button-primary {
       background: var(--accent);
       color: var(--accent-text);
-      box-shadow: 0 10px 30px rgba(199,243,107,0.12);
+      box-shadow: 0 10px 30px rgba(199, 243, 107, 0.14);
     }
 
     .button-primary:hover {
       background: var(--accent-hover);
-      transform: translateY(-1px);
     }
 
     .button-secondary {
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.02);
       color: var(--text);
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.02);
     }
 
     .button-secondary:hover {
-      border-color: rgba(255,255,255,0.16);
-      background: rgba(255,255,255,0.04);
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.13);
     }
 
     .section-head {
       max-width: 760px;
-      margin-bottom: 30px;
+      margin-bottom: var(--space-5);
     }
 
     .eyebrow {
@@ -130,20 +172,20 @@
       letter-spacing: 0.18em;
       font-size: 12px;
       font-weight: 700;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
-    h2 {
-      margin: 0;
-      font-size: clamp(28px, 4vw, 40px);
+    .section-head h2 {
+      font-size: clamp(1.9rem, 4vw, 2.6rem);
       line-height: 1.08;
-      letter-spacing: -0.03em;
+      letter-spacing: -0.04em;
+      font-weight: 720;
     }
 
-    .section-copy {
+    .section-subcopy {
       margin-top: 14px;
+      font-size: 1.05rem;
       color: var(--muted);
-      font-size: 17px;
     }
 
     .grid {
@@ -160,57 +202,113 @@
     }
 
     .card {
-      background: linear-gradient(180deg, rgba(255,255,255,0.025) 0%, rgba(255,255,255,0.015) 100%);
-      border: 1px solid rgba(255,255,255,0.07);
+      background: linear-gradient(180deg, var(--panel-strong) 0%, var(--panel) 100%);
+      border: 1px solid var(--border);
       border-radius: var(--radius);
       padding: 28px;
-      box-shadow: 0 12px 36px rgba(0,0,0,0.18);
+      box-shadow: 0 12px 34px rgba(0, 0, 0, 0.16);
+      min-width: 0;
     }
 
     .card h3 {
-      margin: 0 0 12px;
-      font-size: 22px;
+      font-size: 1.35rem;
       line-height: 1.15;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.03em;
+      font-weight: 680;
+      margin-bottom: 12px;
     }
 
     .card p {
-      margin: 0;
+      font-size: 0.98rem;
       color: var(--muted);
-      font-size: 15px;
     }
 
-    .split-highlight {
-      background: linear-gradient(180deg, rgba(199,243,107,0.08) 0%, rgba(199,243,107,0.03) 100%);
-      border: 1px solid rgba(199,243,107,0.16);
+    .card-accent {
+      background: linear-gradient(180deg, rgba(199, 243, 107, 0.1) 0%, rgba(199, 243, 107, 0.04) 100%);
+      border-color: rgba(199, 243, 107, 0.18);
+    }
+
+    .contact-link {
+      display: inline-block;
+      margin-top: 14px;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      word-break: break-word;
+    }
+
+    .contact-link:hover {
+      text-decoration: underline;
     }
 
     footer {
-      padding: 42px 0 72px;
-      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 36px 0 64px;
+      border-top: 1px solid var(--border);
     }
 
     footer p {
-      margin: 0;
       color: var(--soft);
       font-size: 14px;
     }
 
-    a { color: var(--accent); }
+    @media (max-width: 1024px) {
+      .grid-4 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
 
-    @media (max-width: 960px) {
+    @media (max-width: 768px) {
+      .container {
+        width: min(var(--container), calc(100% - 24px));
+      }
+
+      .hero {
+        padding: 72px 0 56px;
+      }
+
+      .section {
+        padding: 56px 0;
+      }
+
       .grid-2,
       .grid-4 {
         grid-template-columns: 1fr;
       }
 
-      .hero {
-        padding-top: 84px;
-        padding-bottom: 72px;
+      .card {
+        padding: 22px;
       }
 
       .hero h1 {
         line-height: 1.02;
+      }
+
+      .hero-actions {
+        gap: 12px;
+      }
+
+      .button {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .badge {
+        font-size: 12px;
+        padding: 6px 12px;
+      }
+
+      .hero-copy,
+      .section-subcopy {
+        font-size: 1rem;
+      }
+
+      .card h3 {
+        font-size: 1.2rem;
+      }
+
+      .card p {
+        font-size: 0.95rem;
       }
     }
   </style>
@@ -220,7 +318,7 @@
     <div class="container">
       <div class="badge">init100</div>
       <h1>Infrastructure-first HPC and GPU partnerships.</h1>
-      <p>
+      <p class="hero-copy">
         init100 is an operator-led business exploring provider-side HPC and GPU
         infrastructure partnerships, cluster operations, and long-term compute ecosystem opportunities.
       </p>
@@ -231,77 +329,92 @@
     </div>
   </section>
 
-  <section>
-    <div class="container grid grid-2">
-      <div class="card">
-        <div class="eyebrow">About</div>
-        <h3>Built from an operator’s perspective</h3>
-        <p>
-          init100 is focused on the technical and operational foundations behind
-          reliable AI and high-performance compute environments.
-        </p>
-      </div>
-      <div class="card">
-        <div class="eyebrow">Why init100</div>
-        <h3>Technical depth, calm execution</h3>
-        <p>
-          The focus is on credible infrastructure thinking: GPU operations, cluster reliability,
-          storage and networking awareness, and long-term provider-side opportunities.
-        </p>
+  <section class="section">
+    <div class="container">
+      <div class="grid grid-2">
+        <div class="card">
+          <div class="eyebrow">About</div>
+          <h3>Built from an operator’s perspective</h3>
+          <p>
+            init100 is focused on the technical and operational foundations behind
+            reliable AI and high-performance compute environments.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="eyebrow">Why init100</div>
+          <h3>Technical depth, calm execution</h3>
+          <p>
+            The focus is on credible infrastructure thinking: GPU operations, cluster reliability,
+            storage and networking awareness, and long-term provider-side opportunities.
+          </p>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="focus">
+  <section class="section" id="focus">
     <div class="container">
       <div class="section-head">
         <div class="eyebrow">Focus areas</div>
         <h2>Where init100 is leaning in</h2>
-        <div class="section-copy">
+        <p class="section-subcopy">
           A practical, infrastructure-first direction shaped around real operator concerns.
-        </div>
+        </p>
       </div>
 
       <div class="grid grid-4">
         <div class="card">
           <h3>Provider partnerships</h3>
-          <p>Exploring how supply-side GPU and HPC infrastructure can connect with emerging compute platforms and enterprise demand.</p>
+          <p>
+            Exploring how supply-side GPU and HPC infrastructure can connect with emerging compute platforms and enterprise demand.
+          </p>
         </div>
+
         <div class="card">
           <h3>Cluster operations</h3>
-          <p>Interest in the systems, processes, and operating practices required to support reliable compute environments.</p>
+          <p>
+            Interest in the systems, processes, and operating practices required to support reliable compute environments.
+          </p>
         </div>
+
         <div class="card">
           <h3>Reliability and readiness</h3>
-          <p>Attention to infrastructure health, supportability, operational trust, and long-term maintainability.</p>
+          <p>
+            Attention to infrastructure health, supportability, operational trust, and long-term maintainability.
+          </p>
         </div>
+
         <div class="card">
           <h3>Ecosystem opportunities</h3>
-          <p>Evaluating long-term opportunities across AI infrastructure, HPC, and provider-side enablement.</p>
+          <p>
+            Evaluating long-term opportunities across AI infrastructure, HPC, and provider-side enablement.
+          </p>
         </div>
       </div>
     </div>
   </section>
 
-  <section>
-    <div class="container grid grid-2">
-      <div class="card">
-        <div class="eyebrow">Positioning</div>
-        <h3>Early-stage, honest, and technically grounded</h3>
-        <p>
-          init100 is an early-stage effort focused on understanding the provider side of the market,
-          building the right relationships, and aligning future direction with real operational needs.
-        </p>
-      </div>
-      <div class="card split-highlight">
-        <div class="eyebrow">Contact</div>
-        <h3>Let’s connect</h3>
-        <p>
-          For partnership conversations, infrastructure discussions, or long-term provider-side opportunities:
-        </p>
-        <p style="margin-top: 14px;">
-          <a href="mailto:founder@init100.com">founder@init100.com</a>
-        </p>
+  <section class="section">
+    <div class="container">
+      <div class="grid grid-2">
+        <div class="card">
+          <div class="eyebrow">Positioning</div>
+          <h3>Early-stage, honest, and technically grounded</h3>
+          <p>
+            init100 is an early-stage effort focused on understanding the provider side of the market,
+            building the right relationships, and aligning future direction with real operational needs.
+          </p>
+        </div>
+
+        <div class="card card-accent">
+          <div class="eyebrow">Contact</div>
+          <h3>Let’s connect</h3>
+          <p>
+            For partnership conversations, infrastructure discussions, or long-term provider-side opportunities:
+          </p>
+          <a class="contact-link" href="mailto:founder@init100.com">founder@init100.com</a>
+        </div>
       </div>
     </div>
   </section>
